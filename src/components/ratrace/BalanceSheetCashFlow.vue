@@ -2,14 +2,16 @@
   <div class="row">
     <h2>Balance Sheet</h2>
     <monthly-cash-flow class="monthly-cash-flow-area" />
+    <available-cash-area class="available-cash-area" />
   </div>
 </template>
 
 <script>
 import MonthlyCashFlow from "@/components/ratrace/MonthlyCashFlow.vue";
+import AvailableCashArea from "@/components/ratrace/AvailableCashArea.vue";
 
 export default {
-  components: { MonthlyCashFlow }
+  components: { MonthlyCashFlow, AvailableCashArea }
 };
 </script>
 
@@ -17,10 +19,12 @@ export default {
 .row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-rows: auto auto;
   grid-column-gap: 20px;
-  grid-row-gap: 0px;
-  grid-template-areas: "balance-title cashflow-summary";
+  grid-row-gap: 20px;
+  grid-template-areas:
+    "balance-title cashflow-summary"
+    "available-cash available-cash";
 
   h2 {
     grid-area: balance-title;
@@ -35,12 +39,19 @@ export default {
     display: flex;
     align-items: center;
   }
+
+  .available-cash-area {
+    grid-area: available-cash;
+  }
 }
 
 @media (max-width: 800px) {
   .row {
     grid-template-columns: 1fr;
-    grid-template-areas: "cashflow-summary" "balance-title";
+    grid-template-areas:
+      "cashflow-summary"
+      "balance-title"
+      "available-cash";
   }
 
   .monthly-cash-flow-area {
