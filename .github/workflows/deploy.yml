@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-node-version: 24 # You can change this to your preferred Node version
+          node-version: 24
           cache: 'npm'
 
       - name: Install dependencies
@@ -31,7 +31,7 @@ jobs:
         run: npm run build # Creates your 'dist' folder
 
       - name: Upload production artifacts
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist # Points to your build output folder
 
